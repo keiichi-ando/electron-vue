@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.112.0/containers/javascript-node-12
+{
+  "name": "vue-electron-dev",
+
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "electron-dev",
+  "workspaceFolder": "/home/node/myapp",
+  // "dockerFile": "../dockerfile",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "spadin.remote-x11", // 役に立つのかわよくわからない
+    "octref.vetur"
+  ],
+  // Xサーバ（ホスト側）のソケットをDockerコンテナ側にマウントする。
+  //   "mounts": [
+  //     "source=/tmp/.X11-unix/,target=/tmp/.X11-unix/,type=bind,consistency=cached"
+  //     // "source=${localWorkspaceFolder}/volumes/nodejs,target=/var/www,type=bind"
+  //   ],
+  // --privilegedがないとエラーが出る。
+  //   "runArgs": ["--privileged"],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "yarn install",
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node" // rootだと`--no-sandbox`オプションが必要と言われる。
+}
